@@ -11,7 +11,7 @@ size = Vector3(2.75732, 1, 4.47559)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_ni340")]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128106, -1.67812, -0.490108)
