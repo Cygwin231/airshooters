@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4fkkr8k1ow7n"]
+
+[ext_resource type="PackedScene" uid="uid://w3vquimtb2up" path="res://UI/Networking/ip_box.tscn" id="1_b2gd1"]
+[ext_resource type="Script" path="res://UI/menu_controller.gd" id="1_lxvme"]
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_shrwp"]
+[ext_resource type="PackedScene" uid="uid://bjyxta76e70xq" path="res://UI/Networking/port_box.tscn" id="2_tyfmq"]
+[ext_resource type="PackedScene" uid="uid://chdt0rfaijwyi" path="res://UI/Networking/max_players.tscn" id="3_jbhw4"]
+
+[node name="MenuController" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_lxvme")
+
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_shrwp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 600
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 600
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HSplitContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+split_offset = 555
+
+[node name="IPBox" parent="MainMenu/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_b2gd1")]
+layout_mode = 2
+
+[node name="PortBox" parent="MainMenu/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_tyfmq")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MaxPlayers" parent="MainMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_jbhw4")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Join" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Join"
+
+[node name="Host" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Host"
+
+[connection signal="host" from="MainMenu" to="." method="_on_main_menu_host"]
+[connection signal="join" from="MainMenu" to="." method="_on_main_menu_join"]
+[connection signal="button_up" from="MainMenu/MarginContainer/VBoxContainer/Join" to="MainMenu" method="_on_join_button_up"]
+[connection signal="button_up" from="MainMenu/MarginContainer/VBoxContainer/Host" to="MainMenu" method="_on_host_button_up"]

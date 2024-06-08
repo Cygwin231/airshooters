@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://w3vquimtb2up"]
+
+[ext_resource type="Script" path="res://UI/Networking/IPBox.gd" id="1_6x6hf"]
+
+[node name="IPBox" type="VBoxContainer"]
+script = ExtResource("1_6x6hf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "IP Address"
+
+[node name="IP" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "127.0.0.1"
+
+[connection signal="focus_exited" from="IP" to="." method="new_ip"]
+[connection signal="text_submitted" from="IP" to="." method="new_ip"]

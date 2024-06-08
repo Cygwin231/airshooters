@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg8x7ifpxjrth"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ru2rd"]
+[ext_resource type="Script" path="res://Networker.gd" id="1_ssivg"]
+[ext_resource type="PackedScene" uid="uid://c4fkkr8k1ow7n" path="res://UI/menu_controller.tscn" id="2_m1dfw"]
+[ext_resource type="PackedScene" uid="uid://brvj36n2rltve" path="res://UI/Networking/chat.tscn" id="4_j8xcr"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ru2rd")
+
+[node name="MenuController" parent="." instance=ExtResource("2_m1dfw")]
+
+[node name="Networker" type="Node2D" parent="."]
+script = ExtResource("1_ssivg")
+
+[node name="Chat" parent="Networker" instance=ExtResource("4_j8xcr")]
+visible = false
+
+[connection signal="host" from="MenuController" to="." method="_on_menu_controller_host"]
+[connection signal="join" from="MenuController" to="." method="_on_menu_controller_join"]

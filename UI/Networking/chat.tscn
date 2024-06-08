@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://brvj36n2rltve"]
+
+[ext_resource type="Script" path="res://UI/Networking/chat.gd" id="1_hcejm"]
+
+[node name="Chat" type="VBoxContainer"]
+offset_top = -1229.0
+offset_right = 619.0
+offset_bottom = 1080.0
+alignment = 2
+script = ExtResource("1_hcejm")
+
+[node name="Messages" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+placeholder_text = "Type here"
+max_length = 400
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

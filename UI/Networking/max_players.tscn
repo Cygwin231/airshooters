@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://chdt0rfaijwyi"]
+
+[ext_resource type="Script" path="res://UI/Networking/MaxPlayers.gd" id="1_vq1g4"]
+
+[node name="MaxPlayers" type="VBoxContainer"]
+script = ExtResource("1_vq1g4")
+
+[node name="MaxPlayersLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Max Players"
+horizontal_alignment = 1
+
+[node name="Values" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="LineEdit" parent="Values"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "10"
+
+[node name="HSlider" type="HSlider" parent="Values"]
+layout_mode = 2
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 32.0
+value = 10.0
+
+[connection signal="text_submitted" from="Values/Label" to="." method="_on_label_text_submitted"]
+[connection signal="value_changed" from="Values/HSlider" to="." method="_on_h_slider_value_changed"]
