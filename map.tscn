@@ -2,21 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://gc6j7w5p1xph" path="res://player.tscn" id="1_ni340"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ol8dr"]
-size = Vector3(2.75732, 1, 4.47559)
+[sub_resource type="BoxShape3D" id="BoxShape3D_uhk55"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_fpxc6"]
+[sub_resource type="BoxMesh" id="BoxMesh_se6q5"]
 
 [node name="map" type="Node3D"]
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_ni340")]
 
 [node name="Area3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.92188, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128106, -1.67812, -0.490108)
-shape = SubResource("BoxShape3D_ol8dr")
+transform = Transform3D(5.03429, 0, 0, 0, 1, 0, 0, 0, 3.15928, 0, 0, 0)
+shape = SubResource("BoxShape3D_uhk55")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-mesh = SubResource("BoxMesh_fpxc6")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(5.03429, 0, 0, 0, 1, 0, 0, 0, 3.15928, 0, 0, 0)
+mesh = SubResource("BoxMesh_se6q5")
