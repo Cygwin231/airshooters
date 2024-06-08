@@ -19,6 +19,7 @@ func host(port, max_clients):
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
 	multiplayer.multiplayer_peer = peer
+	Global.is_server = true
 	
 	on_connect()
 
@@ -31,8 +32,10 @@ func join(ip, port):
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
 	multiplayer.multiplayer_peer = peer
+	Global.is_server = false
 
 func leave():
+	Global.is_server = false
 	multiplayer.multiplayer_peer = null
 	$Chat.hide()
 
